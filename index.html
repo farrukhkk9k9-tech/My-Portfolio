@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VR Farrukh | Portfolio</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+<nav>
+<h2>VR Farrukh</h2>
+<ul>
+<li onclick="go('profile')">Profile</li>
+<li onclick="go('projects')">Projects</li>
+<li onclick="go('skills')">Skills</li>
+<li onclick="go('cv')">CV</li>
+<li onclick="go('gallery')">Gallery</li>
+<li onclick="go('contact')">Contact</li>
+</ul>
+<button onclick="toggleTheme()">Theme</button>
+</nav>
+</header>
+
+<section id="profile" class="card profile">
+<img src="profile.jpg" alt="Profile">
+<div>
+<h2 class="typing" id="typing"></h2>
+<p>BS Software Engineering | Web Developer</p>
+<p><b>Session Visits:</b> <span id="visitCount"></span></p>
+</div>
+</section>
+
+<section id="biodata" class="card">
+<h2>Bio Data</h2>
+<table style="width:100%; border-collapse:collapse;">
+<tr>
+<td style="padding:12px; font-weight:600;">Full Name</td>
+<td style="padding:12px;">Farrukh Mukhtar</td>
+</tr>
+<tr style="background:rgba(0,0,0,0.03);">
+<td style="padding:12px; font-weight:600;">Age</td>
+<td style="padding:12px;">19 Years</td>
+</tr>
+<tr>
+<td style="padding:12px; font-weight:600;">Gender</td>
+<td style="padding:12px;">Male</td>
+</tr>
+<tr style="background:rgba(0,0,0,0.03);">
+<td style="padding:12px; font-weight:600;">Date of Birth</td>
+<td style="padding:12px;">10 April 2006</td>
+</tr>
+<tr>
+<td style="padding:12px; font-weight:600;">Address</td>
+<td style="padding:12px;">Dargai, District Malakand, Pakistan</td>
+</tr>
+<tr style="background:rgba(0,0,0,0.03);">
+<td style="padding:12px; font-weight:600;">Nationality</td>
+<td style="padding:12px;">Pakistani</td>
+</tr>
+</table>
+</section>
+
+<section id="academic" class="card">
+<h2>Academic Background</h2>
+
+<!-- ===== FILTER & SEARCH BOX ===== -->
+<div style="margin-bottom:15px; display:flex; gap:10px; flex-wrap:wrap;">
+  <select id="academicFilter" onchange="filterAcademic()" style="padding:8px; border-radius:5px; border:1px solid #ccc;">
+    <option value="all">All Levels</option>
+    <option value="School">School</option>
+    <option value="College">College</option>
+    <option value="University">University</option>
+  </select>
+
+  <input type="text" id="academicSearch" onkeyup="filterAcademic()" placeholder="Search Academic..." style="padding:8px; border-radius:5px; border:1px solid #ccc; flex:1;">
+</div>
+
+<table style="width:100%; border-collapse:collapse;">
+<tr style="background:var(--accent); color:white;">
+<th style="padding:12px;">Year</th>
+<th style="padding:12px;">Level</th>
+<th style="padding:12px;">Institution</th>
+<th style="padding:12px;">Qualification</th>
+<th style="padding:12px;">Result</th>
+</tr>
+
+<tr>
+<td style="padding:10px;">2022</td>
+<td style="padding:10px;">School</td>
+<td style="padding:10px;">Avicenna Model School</td>
+<td style="padding:10px;">Matric (Science)</td>
+<td style="padding:10px;">92%</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">2024</td>
+<td style="padding:10px;">College</td>
+<td style="padding:10px;">Avicenna Model College</td>
+<td style="padding:10px;">FSc Pre-Medical</td>
+<td style="padding:10px;">92%</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">2025 – Present</td>
+<td style="padding:10px;">University</td>
+<td style="padding:10px;">UET Peshawar (Abbottabad Campus)</td>
+<td style="padding:10px;">BS Software Engineering</td>
+<td style="padding:10px;">In Progress</td>
+</tr>
+</table>
+</section>
+
+<section id="projects" class="card">
+<h2>Projects</h2>
+<div id="projectList"></div>
+</section>
+
+<section id="skills" class="card">
+<h2>Skills</h2>
+<div class="skill">HTML<div class="progress"><div data-width="90%"></div></div></div>
+<div class="skill">CSS<div class="progress"><div data-width="80%"></div></div></div>
+<div class="skill">JavaScript<div class="progress"><div data-width="70%"></div></div></div>
+<div class="skill">C Language<div class="progress"><div data-width="75%"></div></div></div>
+</section>
+
+<section id="cv" class="card">
+<h2>Curriculum Vitae</h2>
+<button class="submit" onclick="openCV()">View CV</button>
+<button class="submit" onclick="hideCV()">Hide CV</button>
+
+<div id="cvViewer" style="display:none; margin-top:20px;">
+<iframe src="cv.pdf" style="width:100%; height:650px; border-radius:10px;"></iframe>
+<br><br>
+<div style="display:flex; gap:12px; justify-content:center;">
+<a href="cv.pdf" download="VR_Farrukh_CV.pdf">
+<button class="submit">Download CV</button>
+</a>
+<button class="submit" onclick="window.print()">Print CV</button>
+</div>
+</div>
+</section>
+
+<section id="gallery" class="card">
+<h2>Gallery</h2>
+<p style="margin-bottom:20px;">Some highlights of my work and activities.</p>
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px;">
+<img src="IMG_20260119_131909_820.jpg" alt="Gallery Image" style="width:100%; border-radius:10px;">
+<img src="IMG_20260119_132056_468.jpg" alt="Gallery Image" style="width:100%; border-radius:10px;">
+<img src="IMG_20260119_132329_460.jpg" alt="Gallery Image" style="width:100%; border-radius:10px;">
+</div>
+</section>
+
+<section id="video">
+<h2>Website Video Demonstration</h2>
+<video controls width="100%" poster="thumbnail.jpg">
+<source src="website-demo.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p style="margin-top:15px; text-align:center;">This video demonstrates the features and functionality of my portfolio website.</p>
+</section>
+
+<section id="contact" class="card">
+<h2>Contact Me</h2>
+<form onsubmit="return validateForm()">
+<input id="name" placeholder="Your Name">
+<input id="email" type="email" placeholder="Your Email">
+<textarea id="message" placeholder="Message"></textarea>
+<button class="submit">Send</button>
+</form>
+<p class="error" id="error"></p>
+</section>
+
+<div class="toast" id="toast">Message Sent Successfully!</div>
+
+<footer class="card">
+<h2 style="text-align:center;">Connect With Me</h2>
+<p style="text-align:center; margin-bottom:20px;">Follow me on social media and stay connected.</p>
+<div class="social-links">
+<a href="https://instagram.com/vr_fkh" target="_blank" class="social instagram"><i class="fab fa-instagram"></i> Instagram</a>
+<a href="https://facebook.com/Farrukh Mukhtar" target="_blank" class="social facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+<a href="mailto:farrukhkk9k9@gmail.com" class="social email"><i class="fas fa-envelope"></i> Email</a>
+</div>
+<p style="text-align:center; margin-top:25px; font-size:14px; opacity:0.7;">© 2026 VR Farrukh. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// ===== Academic Filter & Search Function =====
+function filterAcademic() {
+    const filter = document.getElementById("academicFilter").value;
+    const search = document.getElementById("academicSearch").value.toLowerCase();
+    const rows = document.querySelectorAll("#academic table tr");
+
+    rows.forEach((row, index) => {
+        if (index === 0) return; // skip header
+        const level = row.querySelector("td:nth-child(2)").innerText;
+        const text = row.innerText.toLowerCase();
+        const matchFilter = filter === "all" || level === filter;
+        const matchSearch = text.includes(search);
+        row.style.display = matchFilter && matchSearch ? "" : "none";
+    });
+}
+</script>
+
+</body>
+</html>
